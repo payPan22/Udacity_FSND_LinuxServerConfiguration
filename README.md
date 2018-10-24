@@ -80,4 +80,81 @@ Now you can use ssh to login with the new user you created
 ```ssh -i ~/.ssh/[privateKeyFilename] grader@xx.xxx.xxx.xxx```
 
 # Prepare to deploy my project
+## Configure the time zone, and set it to UTC
+```
+sudo dpkg-reconfigure tzdata
+```
+## Install and configure Apache to serve a Python mod_wsgi application.
+
+1. Install Apache
+```
+sudo apt-get install apache2
+```
+2. Insatll mode_wsgi
+```
+sudo apt-get install python-setuptools libapache2-mod-wsgi
+```
+3. Restart apache
+```
+sudo service apache2 restart
+```
+## Install and configure PostgreSQL
+1. Install PostgreSQL 
+```sudo apt-get install postgresql```
+
+2. Check if no remote connections are allowed 
+```sudo vi /etc/postgresql/9.3/main/pg_hba.conf```
+
+3. Login as user "postgres" 
+```sudo su - postgres```
+
+4. Get into postgreSQL shell 
+```psql```
+
+5. Create a new database named catalog and create a new user named catalog in postgreSQL shell
+```postgres=# CREATE DATABASE catalog;
+postgres=# CREATE USER catalog;
+```
+6. Set a password for user catalog
+```postgres=# ALTER ROLE catalog WITH PASSWORD 'password';```
+
+7. Give user "catalog" permission to "catalog" application database
+```postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;```
+
+8. Quit postgreSQL 
+```postgres=# \q```
+
+9. Exit from user "postgres" 
+```exit```
+
 # Deploy the Item Catalog Project
+## Clone and setup your Item Catalog project from the Github repository
+1.Install Git using ```sudo apt-get install git``` 
+
+2. Use ```cd /var/www``` to move to the /var/www directory
+
+3. Create the application directory ```sudo mkdir FlaskApp```
+
+4. Move inside this directory using ```cd FlaskApp```
+
+5. Clone the Catalog App to the virtual machine ```git clone https://github.com/adityamehra/catalog2.git```
+
+6. Rename the project's name ```sudo mv ./catalog2 ./FlaskApp```
+
+7. Move to the inner FlaskApp directory using ```cd FlaskApp```
+
+8. Rename server.py to __init__.py using ```sudo mv website.py __init__.py```, if __init__.py not present.
+
+9. Edit database_setup.py and fill_catalog.py to change engine = create_engine('sqlite:///catalog.db') to engine = create_engine('postgresql://catalog:password@localhost/catalog'), if not already done.
+
+10. Install pip ```sudo apt-get install python-pip```
+
+11. Use pip to install dependencies -
+```sudo pip install sqlalchemy flask-sqlalchemy psycopg2 bleach requests```
+```sudo pip install flask packaging oauth2client redis passlib flask-httpauth```
+
+12. Install psycopg2 ```sudo apt-get -qqy install postgresql python-psycopg2```
+
+13. Create database schema ```sudo python database_catalog_setup.py```
+
+14. Fill database ```sudo pip install database_populate_items.py```
