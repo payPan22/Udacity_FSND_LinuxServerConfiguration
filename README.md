@@ -1,16 +1,19 @@
 # Project Overview
 
-Taken a baseline installation of a Linux server and prepared it to host my web applications - Item Catalog Project. I have secured the server from a number of attack vectors, installed and configured a database server, and deployed Item Catalog Project onto it.
+Taken a baseline installation of a Linux server and prepared it to host my web applications - Item Catalog Project. Secured the server from a number of attack vectors, installed and configured a database server, and deployed Item Catalog Project onto it.
+
+Available at - [Link](http://ec2-54-93-222-165.eu-central-1.compute.amazonaws.com/)
+Public IP - 54.93.222.165
 
 # Get your server
 ## Start a new Ubuntu Linux server instance on Amazon Lightsail. 
-Details available on setting up your Lightsail Instance are available on 
+Details on setting up your Lightsail Instance are available at [Udacity's page](https://classroom.udacity.com/nanodegrees/nd004-intr2/parts/d21e4093-10a7-4ef3-a56f-4623e05161b0/modules/e5bd1d0f-22bc-45bd-b512-4c59d7220ae9/lessons/3573679011239847/concepts/c4cbd3f2-9adb-45d4-8eaf-b5fc89cc606e)
 
 ## SSH into the server 
 1. Download Private Key from the SSH keys section in the Account section on Amazon Lightsail.
 2. Move the private key file into the folder ~/.ssh (where ~ is your environment's home directory). So if you downloaded the file to the 3. Downloads folder, just execute the following command in your terminal. mv ~/Downloads/Lightsail-key.pem ~/.ssh/
 4. Open your terminal and type in chmod 400 ~/.ssh/Lightsail-key.pem
-5. In your terminal, type in ssh -i ~/.ssh/Lightsail-key.pem ubuntu@xx.xxx.xxx.xxx
+5. In your terminal, type in ssh -i ~/.ssh/Lightsail-key.pem ubuntu@54.93.222.165
 
 # Secure your server
 ## Update all currently installed packages by 
@@ -78,7 +81,7 @@ $ chmod 644 .ssh/authorized_keys
 
 * Now you can use ssh to login with the new user you created
 
-```$ ssh -i ~/.ssh/[privateKeyFilename] grader@xx.xxx.xxx.xxx```
+```$ ssh -i ~/.ssh/[privateKeyFilename] grader@54.93.222.165```
 
 # Prepare to deploy my project
 ## Configure the time zone, and set it to UTC
@@ -138,28 +141,29 @@ postgres=# CREATE USER catalog;
 
 4. Move inside this directory using ```$ cd FlaskApp```
 
-5. Clone the Catalog App to the virtual machine ```$ git clone https://github.com/adityamehra/catalog2.git```
+5. Clone the Item-Catalog-Project to the virtual machine ```$ git clone https://github.com/payPan22/Item-Catalog-Project.git```
 
 6. Rename the project's name ```$ sudo mv ./catalog2 ./FlaskApp```
 
 7. Move to the inner FlaskApp directory using ```$ cd FlaskApp```
 
-8. Rename server.py to __init__.py using ```$ sudo mv website.py __init__.py```, if __init__.py not present.
+8. Rename catalog_backend.py to __init__.py using ```$ sudo mv website.py __init__.py```, if __init__.py not present.
 
-9. Edit database_setup.py and fill_catalog.py to change engine = create_engine('sqlite:///catalog.db') to engine = create_engine('postgresql://catalog:password@localhost/catalog'), if not already done.
+9. Edit database_catalog_setup.py and database_populate_items.py to change engine = create_engine('sqlite:///catalog.db') to engine = create_engine('postgresql://catalog:password@localhost/catalog'), if not already done.
 
 10. Install pip ```$ sudo apt-get install python-pip```
 
 11. Use pip to install dependencies -
 
 ```$ sudo pip install sqlalchemy flask-sqlalchemy psycopg2 bleach requests```
+
 ```$ sudo pip install flask packaging oauth2client redis passlib flask-httpauth```
 
 12. Install psycopg2 ```$ sudo apt-get -qqy install postgresql python-psycopg2```
 
 13. Create database schema ```$ sudo python database_catalog_setup.py```
 
-14. Fill database ```$ sudo pip install database_populate_items.py```
+14. Add items to database ```$ sudo pip install database_populate_items.py```
 
 ## Configure and Enable a New Virtual Host
 1. Create FlaskApp.conf to edit: ```$ sudo nano /etc/apache2/sites-available/FlaskApp.conf```
@@ -208,3 +212,10 @@ application.secret_key = 'super_secret_key'
 
 3. Restart Apache
 ```$ sudo service apache2 restart```
+
+
+# References 
+* [Configuring Linux Web Server Course by Udacity] (https://classroom.udacity.com/courses/ud299)
+* [How To Deploy a Flask Application on an Ubuntu VPS] (https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+* [How To Secure PostgreSQL on an Ubuntu VPS] (https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps)
+
