@@ -224,7 +224,7 @@ application.secret_key = 'super_secret_key'
 
 
 # References 
-* [Configuring Linux Web Server Course by Udacity] (https://classroom.udacity.com/courses/ud299)
-* [How To Deploy a Flask Application on an Ubuntu VPS] (https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
-* [How To Secure PostgreSQL on an Ubuntu VPS] (https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps)
+* [Configuring Linux Web Server Course by Udacity](https://classroom.udacity.com/courses/ud299)
+* [How To Deploy a Flask Application on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
+* [How To Secure PostgreSQL on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps)
 
