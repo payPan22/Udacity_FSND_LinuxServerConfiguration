@@ -1,9 +1,10 @@
 # Project Overview
 
-Taken a baseline installation of a Linux server and prepared it to host my web applications - Item Catalog Project. Secured the server from a number of attack vectors, installed and configured a database server, and deployed Item Catalog Project onto it.
+Take a baseline installation of a Linux distribution on a virtual machine and prepared it to host a web application, including installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
-Available at - [Link](http://ec2-54-93-222-165.eu-central-1.compute.amazonaws.com/)
-Public IP - 54.93.222.165
+* Complete URL to the hosted web application. - [Link](http://ec2-54-93-222-165.eu-central-1.compute.amazonaws.com/)
+* SSH Port - Changed from 22 to 2200
+* Public IP - 54.93.222.165
 
 # Get your server
 ## Start a new Ubuntu Linux server instance on Amazon Lightsail. 
@@ -11,9 +12,11 @@ Details on setting up your Lightsail Instance are available at [Udacity's page](
 
 ## SSH into the server 
 1. Download Private Key from the SSH keys section in the Account section on Amazon Lightsail.
-2. Move the private key file into the folder ~/.ssh (where ~ is your environment's home directory). So if you downloaded the file to the 3. Downloads folder, just execute the following command in your terminal. mv ~/Downloads/Lightsail-key.pem ~/.ssh/
-4. Open your terminal and type in chmod 400 ~/.ssh/Lightsail-key.pem
-5. In your terminal, type in ssh -i ~/.ssh/Lightsail-key.pem ubuntu@54.93.222.165
+2. Move the private key file into the folder ~/.ssh (where ~ is your environment's home directory). 
+So if you downloaded the file to the Downloads folder, just execute the following command in your terminal. 
+```$ mv ~/Downloads/Lightsail-key.pem ~/.ssh/```
+4. Open your terminal and type in ```$ chmod 400 ~/.ssh/Lightsail-key.pem```
+5. In your terminal, type in ```$ ssh -i ~/.ssh/Lightsail-key.pem ubuntu@54.93.222.165```
 
 # Secure your server
 ## Update all currently installed packages by 
@@ -212,6 +215,12 @@ application.secret_key = 'super_secret_key'
 
 3. Restart Apache
 ```$ sudo service apache2 restart```
+
+
+# My Learnings 
+* To access, secure, and perform the initial configuration of a bare-bones Linux server.
+* To install and configure a web and database server.
+* To host a web application.
 
 
 # References 
