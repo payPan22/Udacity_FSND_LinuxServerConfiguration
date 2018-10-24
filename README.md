@@ -1,6 +1,6 @@
 # Project Overview
 
-Take a baseline installation of a Linux distribution on a virtual machine and prepared it to host a web application, including installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
+Taken a baseline installation of a Linux distribution on a virtual machine and prepared it to host a web application, including installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
 * Complete URL to the hosted web application. - http://ec2-54-93-222-165.eu-central-1.compute.amazonaws.com/
 * SSH Port - Changed from 22 to 2200
