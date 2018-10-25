@@ -24,6 +24,11 @@ So if you downloaded the file to the Downloads folder, just execute the followin
 $ sudo apt-get update
 $ sudo apt-get upgrade
 ```
+*NOTE* - Try the follwoing to update all packages
+```linux
+$ sudo apt-get update && sudo apt-get dist-upgrade
+```
+
 ## Change the SSH port from 22 to 2200. Make sure to configure the Lightsail firewall to allow it.
 1. Change port from 22 to 2200, save and quit.
 ```linux
